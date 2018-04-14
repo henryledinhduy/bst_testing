@@ -1,6 +1,12 @@
 #ifndef BSTree_
 #define BSTree_
 
+/**
+  @Author: Duy Le-Dinh
+  @Version: 0.1
+  @Description:
+    A Binary Search Tree Library. 
+*/
 const int DEPTH_OF_ROOT = 0;
 const int ONE_INCREMENT = 1;
 

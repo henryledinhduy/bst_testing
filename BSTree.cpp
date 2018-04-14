@@ -2,7 +2,7 @@
 #include "BSTree.h"
 #include <cmath>
 
-/* CONSTRUCTOR - DESTRUCTOR */
+/*********************** CONSTRUCTOR - DESTRUCTOR ****************************/
 
 Node::Node(int record) : record(record) {
   left = NULL;
@@ -21,7 +21,7 @@ BSTree::~BSTree() {
 }
 
 
-/* PUBLIC FUNCTIONS */
+/**************************** PUBLIC FUNCTIONS *******************************/
 
 /**
   void BSTree::insert(const int number)
@@ -41,7 +41,6 @@ void BSTree::insert(const int number) {
   }
 }
 
-
 /**
   void BSTree::print()
 
@@ -56,7 +55,6 @@ void BSTree::print() const {
   std::cout << "Number of Node: " << n_counter_ << '\n';
   print_p(root_);
 }
-
 
 /**
   int BSTree::getIPL()
@@ -80,22 +78,20 @@ int BSTree::getIPL() const {
   @PARAMETERS: none
   @RETURN: integer number.
   @IMPORTANT: updateInfo() need to be called to get the newest status.
-
 */
 int BSTree::getAPL() const {
   return ipl_/n_counter_;
 }
 
-
 /**
-void BSTree::deleteS()
+  void BSTree::deleteS()
 
-@DESCRIPTION:
-  Function with Symmetric Deletion Algorithm,
-  Symmetric Deletion Algorithm: Replaces the root root either by the smallest
-  root of the root's right branch or the biggest root of the root's left branch.
-@PARAMETERS: none
-@RETURN: integer number.
+  @DESCRIPTION:
+    Function with Symmetric Deletion Algorithm,
+    Symmetric Deletion Algorithm: Replaces the root root either by the smallest
+    root of the root's right branch or the biggest root of the root's left branch.
+  @PARAMETERS: an integer number
+  @RETURN: none
 */
 void BSTree::deleteS(const int value) {
   if (direction_) {
@@ -107,7 +103,6 @@ void BSTree::deleteS(const int value) {
   }
 }
 
-
 /**
   void BSTree::deleteA()
 
@@ -115,7 +110,7 @@ void BSTree::deleteS(const int value) {
     Public function with Asymmetric Deletion Algorithm,
     Asymmetric Deletion Algorithm: Replace the root root by the smallest root of
     the root's right branch.
-  @PARAMETERS: number to delete
+  @PARAMETERS: an integer number that need to be deleted
   @RETURN: none
 */
 void BSTree::deleteA(const int value) {
@@ -139,7 +134,7 @@ void BSTree::updateInfo() {
 }
 
 
-/* PRIVATE FUNCTIONS */
+/***************************** PRIVATE FUNCTIONS *****************************/
 
 /**
   void BSTree::insert_p(const int number, Node* root)
@@ -149,8 +144,8 @@ void BSTree::updateInfo() {
     a number to the correct position of a Binary Search Tree.
   @PARAMETERS:
     number: an integer number.
-    root: a root root of a tree
-  @RETURN: void.
+    root: a Node pointer
+  @RETURN: none.
 */
 void BSTree::insert_p(const int number, Node* root) {
   if (root->record > number) {
@@ -164,7 +159,6 @@ void BSTree::insert_p(const int number, Node* root) {
   }
 }
 
-
 /**
   void BSTree::print_p(Node *root)
 
@@ -172,8 +166,8 @@ void BSTree::insert_p(const int number, Node* root) {
     Private function that is called in BSTree::print(),
     this function prints the Binary Search Tree to the screen in order.
   @PARAMETERS:
-    root: the root root of the Tree
-  @RETURN: void.
+    root: the root_ pointer.
+  @RETURN: none.
 */
 void BSTree::print_p(Node *root) const {
   if (root != NULL) {
@@ -183,19 +177,17 @@ void BSTree::print_p(Node *root) const {
   }
 }
 
-
 /**
   void BSTree::updateInfo_p(Node* root, int depth)
 
   @DESCRIPTION:
     Use for public function updateInfo()
   @PARAMETERS:
-    root: the root root of the tree
-    depth: the depth of the root root, in our case is 0
+    root: the root_ pointer
+    depth: 0
   @RETURN: integer number.
 */
 void BSTree::updateInfo_p(Node* root, int depth) {
-
   if (root != NULL) {
     root_->depth = depth;
     ipl_ += depth;
@@ -210,10 +202,9 @@ void BSTree::updateInfo_p(Node* root, int depth) {
   void BSTree::rightDelete()
 
   @DESCRIPTION:
-    Detail implementation for Asymmetric Deletion Algorithm,
-
+    Replace the deleted node by node in the right subtree.
   @PARAMETERS:
-    root: the root root.
+    root: a Node pointer;
     value: the record to be deleted.
   @RETURN: none.
 */
@@ -243,7 +234,6 @@ Node* BSTree::rightDelete(Node* root, const int value) {
       } else {
           Node *temp = root;
           Node *succPtr = root->right;
-
           // Traverse to the leftmost child of the right subtree
           while (succPtr->left->left != NULL) {
             succPtr = succPtr->left;
@@ -264,9 +254,8 @@ Node* BSTree::rightDelete(Node* root, const int value) {
 
   @DESCRIPTION:
     Replace the deleted node by it's left side
-
   @PARAMETERS:
-    root: a pointer to Node.
+    root: A Node pointer
     value: the record to be deleted
   @RETURN: none.
 */
@@ -295,7 +284,6 @@ Node* BSTree::leftDelete(Node* root, const int value) {
       } else {
           Node *temp = root;
           Node *succPtr = root->left;
-
           // Traverse to the right child of the left subtree
           while (succPtr->right->right != NULL) {
             succPtr = succPtr->right;
