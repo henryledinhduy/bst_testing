@@ -1,6 +1,9 @@
 #include <iostream>
 #include "BSTree.h"
 #include <cmath>
+#include <cstdlib>
+#include <ctime>
+
 
 /*********************** CONSTRUCTOR - DESTRUCTOR ****************************/
 
@@ -17,7 +20,7 @@ BSTree::BSTree() {
 }
 
 BSTree::~BSTree() {
-  std::cout << "Empty Destructor Called" << '\n';
+  // There is no need for a destructor in this case. 
 }
 
 
@@ -133,8 +136,22 @@ void BSTree::updateInfo() {
   updateInfo_p(root_, 0);
 }
 
+/**
+  void BSTree::getRandomNode()
+
+  @DESCRIPTION:
+    Function return a random node's record.
+  @PARAMETERS: none
+  @RETURN: integer number
+*/
+int BSTree::getRandomNode() {
+  getAllNodeRecord_p(root_);
+  srand(time(0));
+  return node_[rand() % node_.size() - 1];
+}
 
 /***************************** PRIVATE FUNCTIONS *****************************/
+
 
 /**
   void BSTree::insert_p(const int number, Node* root)
@@ -296,5 +313,24 @@ Node* BSTree::leftDelete(Node* root, const int value) {
           delete temp;
           return root;
       }
+  }
+}
+
+/**
+  void BSTree::getAllNodeRecord_p(Node* root)
+
+  @DESCRIPTION:
+    This is for getRandomNode() function. It pushes all node in to a vector so
+    that the getRandomNode() can get one.
+    I am not happy with this but it does the trick well.
+  @PARAMETERS:
+    root: A Node pointer
+  @RETURN: none.
+*/
+void BSTree::getAllNodeRecord_p(Node* root) {
+  if (root!= NULL) {
+    getAllNodeRecord_p(root->left);
+    node_.push_back(root->record);
+    getAllNodeRecord_p(root->right);
   }
 }
