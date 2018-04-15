@@ -17,8 +17,8 @@ using namespace std;
 
 int main(int argc, char const *argv[]) {
   // Test setting
-  const int RECORD_POPULATION = 500;
-  const int TEST_RUN = 10000;
+  const int RECORD_POPULATION = 2000;
+  const int TEST_RUN = 100000;
   const string file_name = "result.txt";
   const bool random = true;
   const bool symmetric = true;
@@ -41,7 +41,7 @@ int main(int argc, char const *argv[]) {
     bst.insert(random_number_1);
   }
 
-  // Performing insert and delete
+  // Performing insertion and deletion
   for (int i = 0; i < TEST_RUN; i++) {
     random_number_1 = random ? distribution(generator): i;
     random_number_2 = bst.getRandomNode();
