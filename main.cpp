@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
 #include "BSTree.h"
-#include <ctime>
 #include <random>
 
 using namespace std;
